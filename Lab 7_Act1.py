@@ -10,3 +10,5 @@
 # Assignment: Lab 7 1
 # Date: 7 October 2019
 
+from math import *
+
