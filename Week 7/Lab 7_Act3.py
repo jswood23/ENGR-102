@@ -12,4 +12,42 @@
 
 from math import *
 
+chessChars = [
+    "♜♞♝♛♚♝♞♜",
+    "♟♟♟♟♟♟♟♟",
+    "♙♙♙♙♙♙♙♙",
+    "♖♘♗♕♔♗♘♖"
+]
+chessCharIdentifiers = [
+    "RNBQKBNR",
+    "PPPPPPPP",
+    "pppppppp",
+    "rnbqkbnr"
+]
 
+board = [
+    "RNBQKBNR",
+    "PPPPPPPP",
+    "        ",
+    "        ",
+    "        ",
+    "        ",
+    "pppppppp",
+    "rnbqkbnr"
+]
+
+# print board
+print("__________")
+for i in range(len(board)):
+    print("|", end="")
+    for j in range(len(board[i])):
+        piece = board[i][j]
+        for x in range(len(chessChars)):
+            for y in range(len(chessChars[x])):
+                if piece == chessCharIdentifiers[x][y]:
+                    piece = chessChars[x][y]
+                    break
+        print(piece, end='')
+    print("|")
+print("__________")
+# print("__________")
