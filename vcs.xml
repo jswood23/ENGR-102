@@ -6,6 +6,10 @@
           <option name="url" value="https://github.com/jswood23/ENGR-102.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/jswood23/ENGR-102" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\jwood.DESKTOP-2H7LJ5E\PycharmProjects" />
