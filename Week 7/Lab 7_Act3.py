@@ -50,4 +50,3 @@ for i in range(len(board)):
         print(piece, end='')
     print("|")
 print("__________")
-# print("__________")
