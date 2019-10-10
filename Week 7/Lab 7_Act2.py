@@ -55,20 +55,18 @@ for number in gradeData:
 
 print('\nPart C\nHighest grade:', maxGrade, '\nLowest grade:', minGrade)
 
-
 # Part D
-# newAvg = 75
-# deltaGrade = newAvg / len(gradeData)
-#
-# newGradeData = [i + deltaGrade for i in gradeData]
-#
-# mean = sum(newGradeData) / len(newGradeData)
-#
-#
-# print('\nPart D\nTo have a new class average of ' + str(newAvg) + ',', deltaGrade, 'points would need to be added '
-#                                                                                    'to each person\'s test.')
-# print(mean)
+newAvg = 75
+sumNewAvg = newAvg * len(gradeData)
+sumGradeData = gradeMean * len(gradeData)
 
-# deltaGrade = newAvg + ((newAvg-gradeMean) / (50 - min(gradeData) * (newAvg - gradeMean)))
+deltaGrade = int(sumNewAvg - sumGradeData) / len(gradeData)
+
+deltaGradeList = [x + deltaGrade for x in gradeData]
+
+print(
+    '\nPart D\nIn order to have a new class average of ' + str(newAvg) + ', ' + str(deltaGrade) + ' points will need '
+                                                                                                  'to be added to '
+                                                                                                  'everybody\'s test.')
 
 # Part E
