@@ -50,7 +50,7 @@ print('Max odd #:', max_num)
 # Part 3: CHALLENGE ACTIVITY 7.7.3: Hourly temperature reporting
 myTemps = [76, 80, 82, 103, 95]
 
-seperator = input("\n\nPart 3 -\nPlease enter a two character seperator such as '--' or '<>': ")
+seperator = input("\n\nPart 3 -\nPlease enter a two character separator such as '--' or '<>': ")
 for temp in myTemps:
     if myTemps.index(temp) < (len(myTemps) - 1):
         print(temp, seperator, end=' ')
