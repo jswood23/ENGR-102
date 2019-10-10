@@ -43,30 +43,50 @@ stdDev = sqrt(diffSquareMean)
 print('Part B\nStandard deviation of the grades:', round(stdDev, 2))
 
 # Part C
+minGrade = gradeData[0]  # Creates an empty variable for the minimum score
+maxGrade = gradeData[0]  # Create an empty variable for the maximum score
 
-minGrade = gradeData[0]
-maxGrade = gradeData[0]
-
-for number in gradeData:
-    if number < minGrade:
+for number in gradeData:  # For loop compares each item in gradeData to the variables
+    if number < minGrade:  # If the number is less than the minimum grade, that number is the new lowest grade
         minGrade = number
-    elif number > maxGrade:
+    elif number > maxGrade:  # If the number is greater than the maximum grade, that number is the new highest grade
         maxGrade = number
 
+# Prints the highest and lowest grade to the user
 print('\nPart C\nHighest grade:', maxGrade, '\nLowest grade:', minGrade)
 
 # Part D
-newAvg = 75
-sumNewAvg = newAvg * len(gradeData)
-sumGradeData = gradeMean * len(gradeData)
+newAvg = 75  # Creates a variable for the teacher's new desired class average
+sumNewAvg = newAvg * len(gradeData)     # Creates variable for the sum of the new average
+sumGradeData = gradeMean * len(gradeData)   # Creates variable for the sum of the gradeData list
 
-deltaGrade = int(sumNewAvg - sumGradeData) / len(gradeData)
+deltaGrade = int(sumNewAvg - sumGradeData) / len(gradeData)  # Calculates the delta grade
 
-deltaGradeList = [x + deltaGrade for x in gradeData]
-
-print(
-    '\nPart D\nIn order to have a new class average of ' + str(newAvg) + ', ' + str(deltaGrade) + ' points will need '
-                                                                                                  'to be added to '
-                                                                                                  'everybody\'s test.')
+# Prints the value of the delta grade to the user
+print('\nPart D\nIn order to have a new class average of ' + str(newAvg) + ', ' + str(deltaGrade) + ' points will need '
+                                                                                                    'to be added to '
+                                                                                                    'everybody\'s '
+                                                                                                    'test.')
 
 # Part E
+median = 0  # Instantiates empty variable to hold the median test score
+keep_going = False  # Conditional variable to control the while loop
+
+# While loop checks if the list is even or odd
+while not keep_going:
+    if len(gradeData) % 2 == 0:     # If the list is even, the median is calculated accordingly
+        gradeData.sort()
+        length = len(gradeData)
+        middle = len(gradeData) - 1
+        median = ((gradeData[int(length / 2)] + gradeData[int(middle / 2)]) / 2.0)
+        break
+
+    elif len(gradeData) % 2 != 0:       # If the list is odd, the median is calculated accordingly
+        gradeData.sort()
+        length = len(gradeData)
+        middle = len(gradeData) - 1
+        median = ((gradeData[int(length / 2)] + gradeData[int(middle / 2)]) / 2.0)
+        break
+
+# The median test score is printed to the user
+print('\nPart E\nMedian test score:', median)
