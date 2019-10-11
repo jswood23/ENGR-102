@@ -131,8 +131,3 @@ while moving:
     else:
         print("That was not a valid move input.\n")
         continue
-
-
-
-
-
