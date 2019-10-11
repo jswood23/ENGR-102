@@ -8,7 +8,7 @@
 # Troy Hays
 # Course/Section: ENGR 102-201/216/522
 # Assignment: Lab 7 3
-# Date: 9 October 2019
+# Date: 11 October 2019
 
 chessCharIdentifiers = [
     "RNBQKBNR",
