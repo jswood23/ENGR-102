@@ -33,8 +33,7 @@ pressureHigh = []
 pressureAvg = []
 pressureLow = []
 precipitation = []
-
-print(weatherList)
+maxminTemp = []
 
 for i in range(len(weatherList)):
     date.append(weatherList[i][0])
@@ -60,3 +59,7 @@ for item in tempHigh:
         maxTemp = item
 
 print('Part (a)\nThe maximum and minimum temperatures seen over the past 3 years are below.')
+print('Date \t\t\tMaximum Temperature\t\t\tMinimum Temperature')
+
+for item in date:
+    print(item)
