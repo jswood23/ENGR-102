@@ -11,31 +11,33 @@
 # Assignment: Lab 9, Activity 3
 # Date: 23 October 2019
 
-file = open('WeatherDataWindows.csv', 'r')
-s = file.readlines()
-del s[:1]
+file = open('WeatherDataWindows.csv', 'r')  # Opens the weather data file
+s = file.readlines()  # Reads the line of the file
+del s[:1]  # Deletes the first row because it is just headers
 
-weatherList = []
+weatherList = []  # Creates empty list to store all raw data
 for item in s:
-    weatherList.append(item.strip().split(','))
+    weatherList.append(item.strip().split(','))  # Appends each item in the file to the list
 
-date = []
-tempHigh = []
-tempAvg = []
-tempLow = []
-dewPointHigh = []
-dewPointAvg = []
-dewPointLow = []
-humidHigh = []
-humidAvg = []
-humidLow = []
-pressureHigh = []
-pressureAvg = []
-pressureLow = []
-precipitation = []
-maxminTemp = []
+# Creates an empty list to store each of the category data
+date = []  # Stores all of the dates
+tempHigh = []  # Stores all of the high temperatures
+tempAvg = []  # Stores all of the average temperatures
+tempLow = []  # Stores all of the low temperatures
+dewPointHigh = []  # Stores all of the high dew point levels
+dewPointAvg = []  # Stores all of the average dew point levels
+dewPointLow = []  # Stores all of the low dew point levels
+humidHigh = []  # Stores all of the high humidity levels
+humidAvg = []  # Stores all of the average humidity levels
+humidLow = []  # Stores all of the low humidity levels
+pressureHigh = []  # Stores all of the high pressure levels
+pressureAvg = []  # Stores all of the average pressure levels
+pressureLow = []  # Stores all of the low pressure levels
+precipitation = []  # Stores all of the precipitation
+datemaxminTemp = []  # Stores the date, max temperature, and minimum temperature in a list for part A
+dateavgPrecip = []  # Stores the date, and precipitation together in a list for part B
 
-for i in range(len(weatherList)):
+for i in range(len(weatherList)):  # Appends each item to it's corresponding list
     date.append(weatherList[i][0])
     tempHigh.append((weatherList[i][1]))
     tempAvg.append(weatherList[i][2])
@@ -51,15 +53,25 @@ for i in range(len(weatherList)):
     pressureLow.append(weatherList[i][12])
     precipitation.append(weatherList[i][13])
 
-maxTemp = 0
+# Part A
+print('\nPart (a)\nThe maximum and minimum temperatures seen over the past 3 years are below.')  # Prints intro
+print('Date \t\t\t\t\t\t\t\t\tMaximum Temperature\t\tMinimum Temperature')  # Prints headers
 
-for item in tempHigh:
-    item = float(item)
-    if item > maxTemp:
-        maxTemp = item
+for i in range(len(date)):  # Appends the date, the high temperature, and the low temperature to the datemaxminTemp list
+    datemaxminTemp.append(date[i])
+    datemaxminTemp.append(tempHigh[i])
+    datemaxminTemp.append(tempLow[i])
+    datemaxminTemp.append('\n')
 
-print('Part (a)\nThe maximum and minimum temperatures seen over the past 3 years are below.')
-print('Date \t\t\tMaximum Temperature\t\t\tMinimum Temperature')
+print(*datemaxminTemp, sep='\t\t\t\t\t')  # Prints the result. THE FORMATTING NEEDS FIXING
 
-for item in date:
-    print(item)
+# Part B
+print('\nPart (b)The average daily precipitation seen over the 3 year period is below')
+print('\t\t\tDate\t\t\t\tAverage Daily Precipitation')
+
+for i in range(len(date)):  # Appends the date, and the precipitation to the dateavgPrecip list
+    dateavgPrecip.append(date[i])
+    dateavgPrecip.append(precipitation[i])
+    dateavgPrecip.append('\n')
+
+print(*dateavgPrecip, sep='\t\t\t') # Prints the result. THE FORMATTING NEEDS FIXING
