@@ -11,6 +11,8 @@
 # Assignment: Lab 9, Activity 3
 # Date: 23 October 2019
 
+from random import *
+
 file = open('WeatherDataWindows.csv', 'r')  # Opens the weather data file
 s = file.readlines()  # Reads the line of the file
 del s[:1]  # Deletes the first row because it is just headers
@@ -55,7 +57,7 @@ for i in range(len(weatherList)):  # Appends each item to it's corresponding lis
 
 # Part A
 print('\nPart (a)\nThe maximum and minimum temperatures seen over the past 3 years are below.')  # Prints intro
-print('Date \t\t\t\t\t\t\t\t\tMaximum Temperature\t\tMinimum Temperature')  # Prints headers
+print('\t\t\t\t\t  Date    \t\t\tMaximum Temperature\t Minimum Temperature', end="\n\t\t\t\t\t")  # Prints headers
 
 for i in range(len(date)):  # Appends the date, the high temperature, and the low temperature to the datemaxminTemp list
     datemaxminTemp.append(date[i])
@@ -67,7 +69,7 @@ print(*datemaxminTemp, sep='\t\t\t\t\t')  # Prints the result. THE FORMATTING NE
 
 # Part B
 print('\nPart (b)The average daily precipitation seen over the 3 year period is below')
-print('\t\t\tDate\t\t\t\tAverage Daily Precipitation')
+print('\t\t\t  Date\t\tAverage Daily Precipitation', end="\n\t\t\t")
 
 for i in range(len(date)):  # Appends the date, and the precipitation to the dateavgPrecip list
     dateavgPrecip.append(date[i])
@@ -75,3 +77,54 @@ for i in range(len(date)):  # Appends the date, and the precipitation to the dat
     dateavgPrecip.append('\n')
 
 print(*dateavgPrecip, sep='\t\t\t') # Prints the result. THE FORMATTING NEEDS FIXING
+
+
+# Part C1: output high and low temperatures for a particular day
+this_day = randint(0, len(date))  # choose a random day
+day = date[this_day]  # find the date
+maxTemp = tempHigh[this_day]  # find the maximum temp
+minTemp = tempLow[this_day]  # find the minimum temp
+print("\n\nPart C1:\nOn " + day + ", the maximum temperature was " + str(maxTemp) + " and the minimum temperature was "
+      + str(minTemp))  # output result
+
+# Part C2:
+dateNums = []
+for i in date:
+    dateNums.append(i.split("/"))
+
+Months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+          "December"]
+months = []
+iteration_month = "1"
+month_dict = {"Start": 0}
+m = dateNums[0][0]
+for i in range(len(dateNums)):
+    m = dateNums[i][0]
+    if m != iteration_month or i == len(dateNums) - 1:
+        month_dict["End"] = i - 1  # add 'end' index
+        month_dict["Month"] = Months[int(dateNums[i - 1][0])]  # add 'month' index
+        month_dict["Year"] = dateNums[i][2]  # add 'year' index
+        months.append(month_dict)
+
+        month_dict = {"Start": i}  # start new dictionary for next parameter, add 'start' index
+        iteration_month = m
+
+this_month = months[randint(0, len(months))]
+print(this_month["Month"], this_month["Year"], this_month["Start"], this_month["End"])
+avg = 0
+for i in range(this_month["Start"], this_month["End"]):
+    avg += int(tempHigh[i])
+avg /= this_month["End"] - this_month["Start"]
+avg = round(avg, 2)
+print("\n\nPart C2:\nThe average high temperature for", this_month["Month"], this_month["Year"], "is", avg)
+
+
+# Part C3
+perc_days = 0
+for i in humidHigh:
+    if int(i) >= 90:
+        perc_days += 1
+perc_days /= len(humidHigh)
+perc_days *= 100
+perc_days = round(perc_days, 1)
+print("\n\nPart C3:\nThe humidity went over 90% for " + str(perc_days) + "% of the days in the 3-year time interval.")
