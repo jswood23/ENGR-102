@@ -11,3 +11,12 @@
 # Assignment: Lab 10 Activity 2
 # Date: 27 October 2019
 
+# Part C-1 (Josh)
+
+
+# Part C-2
+
+
+# Part C-3
+
+
