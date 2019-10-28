@@ -16,8 +16,9 @@ out = open("Fahrenheit.dat", 'w')
 x = inp.read()
 
 for i in x.split('\n'):
-    f = (float(i) * 9 / 5) + 32
-    out.write(str(f) + '\n')
+    if i.isnumeric():
+        f = (float(i) * 9 / 5) + 32
+        out.write(str(f) + '\n')
 
 inp.close()
 out.close()
