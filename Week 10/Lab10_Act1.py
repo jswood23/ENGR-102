@@ -14,7 +14,7 @@ import numpy as np
 
 # C) 1
 print("c) 1. As a team, we have gone through all required sections of the tutorial,"
-      "      and each team member understands the material.\n")
+      " and each team member understands the material.\n")
 
 # C) 2
 print("c) 2. ")
