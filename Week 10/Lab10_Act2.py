@@ -39,3 +39,24 @@ plt.show()  # open a new window with the plot
 
 
 # Part C-3 (Troy)
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Sine graph
+xaxis = np.arange(-6, 6.5, 0.1)  # Creates x-values for sine graph
+sinyaxis = np.sin(xaxis)  # Creates y-values for sine graph
+
+# Cosine graph
+cosyaxis = np.cos(xaxis)  # Creates y-values for cosine graph
+
+# Graphs sine and cosine
+plt.plot(xaxis, sinyaxis, label='sin(x)')
+plt.plot(xaxis, cosyaxis, label='cos(x)', color='red')
+
+plt.legend(loc='lower left')    # Creates legend for graphs
+
+# Creates labels for the graph
+plt.title('Plot of cos(x) and sin(x)')
+plt.xlabel('x values')
+plt.ylabel('y values')
+plt.show()
