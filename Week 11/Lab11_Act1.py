@@ -10,24 +10,39 @@
 # Assignment: Lab11 Act1
 # Date: 4 November 2019
 
-from math import *
+# Part a)
 
-def f_of_x(x):
-    # original function was f = x**3 + 3*x**2 + 4*x
-    f = x**3 + 3*x**2 + 4*x
-    return f
+# Part b)
 
-def deriv(x):
-    tolerance = 1e-6
-    h = 1
-    lim = 1
-    dfdx = (f_of_x(x + h) - f_of_x(x)) / h
-    while lim > tolerance:
-        h /= 2
-        dfdx1 = (f_of_x(x + h) - f_of_x(x)) / h
-        lim = abs(dfdx1 - dfdx)
-        dfdx = dfdx1
-    return round(dfdx, 2)
+# Part c)
+def newton_step(num):
+    approximation = initial_guess - (F(num)/deriv(num))
+    return approximation
 
-print(deriv(5))
+# Part d)
+def newton(initial_guess):
+    first_approximation = newton_step(initial_guess)
+    next_approximation = newton_step(first_approximation)
+    
+    approximations = [initial_guess, first_approximation, next_approximation]
+    diff = first_approximation - next_approximation
+    while abs(diff) >= 1e-6:
+        last_approximation = next_approximation
+        next_approximation = newton_step(last_approximation)
+        approximations.append(next_approximation)
+        diff = last_approximation - next_approximation
+        return approximations
 
+# Part e)
+F = eval(input("Enter a function in appropriate Python syntax: "))
+x0 = float(input("Enter the initial guess for a root of the function: ")
+
+print("Successive root approximations:\n", newton(x0))
+
+# Part f)
+
+# Part g)
+
+# Challenge a)
+
+# Challenge b)
